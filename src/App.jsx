@@ -1,4 +1,5 @@
-import Main from "./layout/MainLayout.jsx"
+import Header from "./layout/Header.jsx";
+import Main from "./layout/MainLayout.jsx";
 
 function App() {
   return (
