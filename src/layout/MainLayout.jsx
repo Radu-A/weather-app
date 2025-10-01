@@ -1,15 +1,10 @@
-import sunny from "../assets/bg-sunny.jpg";
-
-import SearchBar from "../components/SearchBar";
+import Banner from "../components/Banner";
 
 function Main() {
   return (
     <>
-      <main
-        className="h-screen bg-cover bg-center"
-        style={{ backgroundImage: `url(${sunny})` }}
-      >
-		<SearchBar></SearchBar>
+      <main className="text-white">
+        <Banner></Banner>
       </main>
     </>
   );

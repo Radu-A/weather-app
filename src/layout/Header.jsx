@@ -3,8 +3,11 @@ import SearchBar from "../components/SearchBar";
 function Header() {
   return (
     <>
-      <h1 class="text-3x1 font-bold">Wheather App</h1>
-	  <SearchBar></SearchBar>
+      <header className="text-white">
+        <SearchBar></SearchBar>
+        <h2 className="text-2xl">Sevilla, Spain</h2>
+        <h4 className="text-sm">Thursday, October 25</h4>
+      </header>
     </>
   );
 }
