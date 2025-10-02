@@ -1,5 +1,28 @@
-export default function Banner(weatherData) {
-  weatherData ? console.log(weatherData["main"]["temp"]) : console.log("bosta");
+import { useEffect } from "react";
+
+export default function Banner({ weatherData }) {
+  useEffect(() => {
+    console.log(weatherData);
+  }, [weatherData]);
+
+  if (weatherData && Number(weatherData.cod) !== 200) {
+    return (
+      <div className="p-4 text-center text-white">
+        Error: {weatherData.message ?? "Ciudad no encontrada"}
+      </div>
+    );
+  }
+
+  const temp = Math.round(weatherData?.main?.temp) ?? "--";
+  const desc = weatherData?.weather?.[0]?.description ?? "--";
+  const tempMax = Math.round(weatherData?.main?.temp_max) ?? "--";
+  const tempMin = Math.round(weatherData?.main?.temp_min) ?? "--";
+  const humidity = weatherData?.main?.humidity ?? "--";
+  const wind = Math.round(weatherData?.wind?.speed) ?? "--";
+  const rain = weatherData?.rain
+    ? weatherData.rain["1h"] ?? weatherData.rain["3h"] ?? "--"
+    : "--";
+
   return (
     <section
       className="flex flex-col items-center gap-6 p-3"
@@ -8,8 +31,11 @@ export default function Banner(weatherData) {
       {/* First line */}
       <article className="flex w-full max-w-md">
         <div className="general flex-1 text-center">
-          <h1 className="text-9xl">33</h1>
-          <h3 className="text-lg">Sunny</h3>
+          <h1 className="text-9xl">
+            {temp}
+            <span className="align-super text-6xl">º</span>
+          </h1>
+          <h3 className="text-lg">{desc}</h3>
         </div>
         <div className="weather-icon-container flex-1 flex justify-center">
           <div className="weather-icon w-30 h-30 rounded-full  bg-white shadow-[0_0_30px_20px_rgba(255,255,255,0.8)]"></div>
@@ -26,7 +52,7 @@ export default function Banner(weatherData) {
             shadow-[inset_1px_1px_6px_rgba(0,0,0,0.5),0_2px_4px_rgba(255,255,255,0.5)]"
           id="max"
         >
-          <span className="text-base">High: 32ºC</span>
+          <span className="text-base">High: {tempMax}ºC</span>
         </div>
 
         <div
@@ -35,7 +61,7 @@ export default function Banner(weatherData) {
             shadow-[inset_1px_1px_6px_rgba(0,0,0,0.5),0_2px_4px_rgba(255,255,255,0.5)]"
           id="min"
         >
-          <span className="text-base">Min: 18ºC</span>
+          <span className="text-base">Min: {tempMin}ºC</span>
         </div>
       </article>
       {/* Third line */}
@@ -47,15 +73,15 @@ export default function Banner(weatherData) {
       >
         <div className="flex-1 extra-item" id="humidity">
           <span>Humidity</span>
-          <h3>62%</h3>
+          <h3>{humidity}%</h3>
         </div>
         <div className="flex-1 extra-item" id="wind">
-          <span>Humidity</span>
-          <h3>19 km/h</h3>
+          <span>Wind</span>
+          <h3>{wind} km/h</h3>
         </div>
         <div className="flex-1 extra-item" id="rain">
           <span>Rain</span>
-          <h3>24%</h3>
+          <h3>{rain}%</h3>
         </div>
       </article>
     </section>

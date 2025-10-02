@@ -1,10 +1,10 @@
 import Banner from "../components/Banner";
 
-function Main() {
+function Main({weatherData}) {
   return (
     <>
       <main className="text-white">
-        <Banner></Banner>
+        <Banner weatherData={weatherData}></Banner>
       </main>
     </>
   );
