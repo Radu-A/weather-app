@@ -1,8 +1,11 @@
 export default function Banner() {
   return (
     <div>
-      <h1 className="text-8xl font-bold">27º</h1>
-      <h3 className="text-lg">Sunny</h3>
+      <div className="general">
+        <h1 className="text-8xl font-bold">27º</h1>
+        <h3 className="text-lg">Sunny</h3>
+      </div>
+      <div className="weather-icon w-30 h-30 rounded-full  bg-white shadow-[0_0_30px_20px_rgba(255,255,255,0.8)]"></div>
       <div id="max-min">
         <div id="max">
           <span>High: 32º</span>
