@@ -1,4 +1,5 @@
-export default function Banner() {
+export default function Banner(weatherData) {
+  weatherData ? console.log(weatherData["main"]["temp"]) : console.log("bosta");
   return (
     <section
       className="flex flex-col items-center gap-6 p-3"
@@ -7,7 +8,7 @@ export default function Banner() {
       {/* First line */}
       <article className="flex w-full max-w-md">
         <div className="general flex-1 text-center">
-          <h1 className="text-9xl">27º</h1>
+          <h1 className="text-9xl">33</h1>
           <h3 className="text-lg">Sunny</h3>
         </div>
         <div className="weather-icon-container flex-1 flex justify-center">
@@ -20,16 +21,16 @@ export default function Banner() {
         className="flex justify-between w-full max-w-sm text-lg"
       >
         <div
-          class="px-5 py-2 rounded-3xl
+          className="px-5 py-2 rounded-3xl
             text-white
             shadow-[inset_1px_1px_6px_rgba(0,0,0,0.5),0_2px_4px_rgba(255,255,255,0.5)]"
           id="max"
         >
-          <span class="text-base">High: 32ºC</span>
+          <span className="text-base">High: 32ºC</span>
         </div>
 
         <div
-          class="px-5 py-2 rounded-3xl
+          className="px-5 py-2 rounded-3xl
             text-white
             shadow-[inset_1px_1px_6px_rgba(0,0,0,0.5),0_2px_4px_rgba(255,255,255,0.5)]"
           id="min"
