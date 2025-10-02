@@ -19,9 +19,7 @@ export default function Banner({ weatherData }) {
   const tempMin = Math.round(weatherData?.main?.temp_min) ?? "--";
   const humidity = weatherData?.main?.humidity ?? "--";
   const wind = Math.round(weatherData?.wind?.speed) ?? "--";
-  const rain = weatherData?.rain
-    ? weatherData.rain["1h"] ?? weatherData.rain["3h"] ?? "--"
-    : "--";
+  const feels = Math.round(weatherData?.main?.feels_like) ?? "--";
 
   return (
     <section
@@ -67,9 +65,10 @@ export default function Banner({ weatherData }) {
       {/* Third line */}
       <article
         id="extra"
-        className="flex justify-between w-full max-w-sm text-center gap-4 px-5 py-2 rounded-3xl
+        className="flex justify-between w-full max-w-sm text-center px-5 py-2 rounded-3xl
             text-white
-            shadow-[inset_1px_1px_6px_rgba(0,0,0,0.5),0_2px_4px_rgba(255,255,255,0.5)]"
+            shadow-[inset_1px_1px_6px_rgba(0,0,0,0.5),0_2px_4px_rgba(255,255,255,0.5)]
+            divide-x divide-white/50"
       >
         <div className="flex-1 extra-item" id="humidity">
           <span>Humidity</span>
@@ -80,8 +79,8 @@ export default function Banner({ weatherData }) {
           <h3>{wind} km/h</h3>
         </div>
         <div className="flex-1 extra-item" id="rain">
-          <span>Rain</span>
-          <h3>{rain}%</h3>
+          <span>Feels Like</span>
+          <h3>{feels}º</h3>
         </div>
       </article>
     </section>
