@@ -34,8 +34,21 @@ export default function Banner({ weatherData }) {
           </h1>
           <h3 className="text-lg">{desc}</h3>
         </div>
-        <div className="weather-icon-container flex-1 flex justify-center">
-          <div className="weather-icon w-30 h-30 rounded-full  bg-white shadow-[0_0_30px_20px_rgba(255,255,255,0.8)]"></div>
+        {/* <div className="weather-icon-container flex-1 flex justify-center"> */}
+          {/* <div className="weather-icon w-30 h-30 rounded-full  bg-white shadow-[0_0_30px_20px_rgba(255,255,255,0.8)]"></div> */}
+              <div className="relative w-50 h-24">
+      {/* Parte central grande */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-24 rounded-full bg-white shadow-lg"></div>
+
+      {/* Parte izquierda */}
+      <div className="absolute bottom-0 left-4 w-20 h-20 rounded-full bg-white shadow-lg"></div>
+
+      {/* Parte derecha */}
+      <div className="absolute bottom-0 right-4 w-20 h-20 rounded-full bg-white shadow-lg"></div>
+
+      {/* Base de la nube */}
+      {/* <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-12 rounded-full bg-white shadow-lg"></div> */}
+    {/* </div> */}
         </div>
       </article>
       {/* Second line */}
