@@ -1,8 +1,13 @@
+import iconSad from "../assets/icons/icon_sad.svg";
+
 export default function Banner({ weatherData }) {
   if (weatherData && Number(weatherData.cod) !== 200) {
     return (
-      <div className="p-4 text-center text-white">
-        Error: {weatherData.message ?? "Ciudad no encontrada"}
+      <div className="flex flex-col items-center p-4 text-2xl text-center text-white">
+        {/* Error: {weatherData.message ?? "Ciudad no encontrada"} */}
+        <img src={iconSad} alt="" className="w-20" />
+        <p>We are so sorry.</p>
+        <p>We couldn't find that city.</p>
       </div>
     );
   }
