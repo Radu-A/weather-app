@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 import Header from "./layout/Header.jsx";
 import MainLayout from "./layout/MainLayout.jsx";
+import TestLayout from "./layout/TestLayout.jsx";
 
 function App() {
   // Save searched city in "CitySearch" component,
@@ -31,7 +32,8 @@ function App() {
     <>
       <div className="h-screen bg-gradient-to-b from-sky-600 to-sky-200">
         <Header city={city} setCity={setCity}></Header>
-        <MainLayout weatherData={weatherData}></MainLayout>
+        <TestLayout></TestLayout>
+        {/* <MainLayout weatherData={weatherData}></MainLayout> */}
       </div>
     </>
   );
