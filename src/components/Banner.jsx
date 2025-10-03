@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 export default function Banner({ weatherData }) {
   if (weatherData && Number(weatherData.cod) !== 200) {
     return (
