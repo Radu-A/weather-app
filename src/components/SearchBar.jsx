@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-export default function SearchBar({ onSearch }) {
+export default function SearchBar({ setCity }) {
   const [query, setQuery] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (query.trim() !== "") {
-      onSearch(query);
+      setCity(query);
       setQuery("");
     }
   };

@@ -1,10 +1,6 @@
 import { useEffect } from "react";
 
 export default function Banner({ weatherData }) {
-  useEffect(() => {
-    console.log(weatherData);
-  }, [weatherData]);
-
   if (weatherData && Number(weatherData.cod) !== 200) {
     return (
       <div className="p-4 text-center text-white">
