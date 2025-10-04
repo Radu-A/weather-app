@@ -4,6 +4,7 @@ import Rain from "../shapes/Rain";
 import Snow from "../shapes/Snow";
 import Moon from "../shapes/Moon";
 import Thunder from "../shapes/Thunder";
+import GetShape from "../shapes/GetShape";
 
 export default function TestLayout() {
   return (
@@ -14,6 +15,7 @@ export default function TestLayout() {
       <Rain></Rain>
       <Snow></Snow>
       <Thunder></Thunder>
+      <GetShape></GetShape>
     </div>
   );
 }

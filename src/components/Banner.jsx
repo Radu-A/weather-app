@@ -39,6 +39,7 @@ export default function Banner({ weatherData }) {
           </h1>
           <h3 className="text-lg">{desc}</h3>
         </div>
+        <Sun></Sun>
       </article>
       {/* Second line */}
       <article
@@ -84,10 +85,6 @@ export default function Banner({ weatherData }) {
           <h3>{feels}º</h3>
         </div>
       </article>
-      
-        <Sun></Sun>
-        <Cloud></Cloud>
-        <Moon></Moon>
     </section>
   );
 }

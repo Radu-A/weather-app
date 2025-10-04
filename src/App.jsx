@@ -32,8 +32,8 @@ function App() {
     <>
       <div className="h-screen bg-gradient-to-b from-sky-600 to-sky-200">
         <Header city={city} setCity={setCity}></Header>
-        <TestLayout></TestLayout>
-        {/* <MainLayout weatherData={weatherData}></MainLayout> */}
+        {/* <TestLayout></TestLayout> */}
+        <MainLayout weatherData={weatherData}></MainLayout>
       </div>
     </>
   );
