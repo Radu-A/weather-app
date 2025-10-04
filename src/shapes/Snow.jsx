@@ -1,31 +1,32 @@
 export default function Snow() {
   return (
     <div className="flex flex-col items-center gap-4 p-4">
-      {/* Fila 1 (copos pequeños) */}
-      <div className="flex gap-6">
+      {/* Fila 1 */}
+      <div className="flex gap-6 translate-x-0">
+        <Snowflake size="w-4 h-4" />
         <Snowflake size="w-3 h-3" />
-        <Snowflake size="w-3 h-3" />
-        <Snowflake size="w-3 h-3" />
+        <Snowflake size="w-4 h-4" />
+		
       </div>
 
-      {/* Fila 2 (copos medianos) */}
-      <div className="flex gap-6">
+      {/* Fila 2 (un poco más a la derecha) */}
+      <div className="flex gap-6 translate-x-2">
         <Snowflake size="w-4 h-4" />
-        <Snowflake size="w-4 h-4" />
+        <Snowflake size="w-5 h-5" />
         <Snowflake size="w-4 h-4" />
       </div>
 
-      {/* Fila 3 (copos grandes) */}
-      <div className="flex gap-6">
+      {/* Fila 3 (más inclinada aún a la derecha) */}
+      <div className="flex gap-6 translate-x-4">
         <Snowflake size="w-5 h-5" />
-        <Snowflake size="w-5 h-5" />
+        <Snowflake size="w-4 h-4" />
         <Snowflake size="w-5 h-5" />
       </div>
     </div>
   );
 }
 
-// Componente copo ❄️
+// Copo ❄️ minimalista
 function Snowflake({ size }) {
   return (
     <div className={`relative ${size}`}>

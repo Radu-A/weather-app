@@ -1,11 +1,23 @@
-export default function Moon (){
+export default function Moon() {
   return (
-    <div className="relative w-32 h-32 flex items-center justify-center">
-      {/* Círculo principal */}
-      <div className="w-24 h-24 rounded-full bg-yellow-200 shadow-[0_0_20px_8px_rgba(255,255,150,0.6)]"></div>
+    <div className="relative w-30 h-30 flex items-center justify-center">
+      {/* Aura (halo) */}
+      <div className="absolute w-30 h-30 rounded-full bg-yellow-200/40 blur-xl shadow-[0_0_30px_20px_rgba(255,255,255,0.8)]"></div>
 
-      {/* "Sombra" para el efecto creciente/menguante */}
-      <div className="absolute w-20 h-24 rounded-full bg-gray-900 translate-x-4"></div>
+      {/* Círculo amarillo (luna) con máscara */}
+      <div
+        className="relative w-30 h-30 rounded-full bg-yellow-200"
+        style={{
+          WebkitMaskImage:
+            "radial-gradient(circle at 75% 35%, transparent 40%, black 41%)",
+          WebkitMaskRepeat: "no-repeat",
+          WebkitMaskSize: "cover",
+          maskImage:
+            "radial-gradient(circle at 75% 35%, transparent 40%, black 41%)",
+          maskRepeat: "no-repeat",
+          maskSize: "cover",
+        }}
+      ></div>
     </div>
   );
 }
