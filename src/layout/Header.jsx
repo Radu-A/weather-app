@@ -1,5 +1,6 @@
 import SearchBar from "../components/CitySearch";
 import TestSearch from "../components/TestSearch";
+import { capitalize } from "../utils/text";
 
 function Header({ city, setCity }) {
   const now = new Date();
@@ -8,13 +9,6 @@ function Header({ city, setCity }) {
     month: "long",
     day: "numeric",
   });
-  const capitalize = (string) => {
-    return string
-      .toLowerCase()
-      .split(" ")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
-  };
 
   return (
     <>
