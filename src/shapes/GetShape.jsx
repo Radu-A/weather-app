@@ -31,6 +31,8 @@ export default function WeatherIcon({iconCode}) {
     "02n": <Cloud></Cloud>, // Few clouds (night)
     "03d": <Cloud></Cloud>, // Scattered clouds
     "03n": <Cloud></Cloud>,
+    "04d": <Cloud></Cloud>, // Broken clouds
+    "04n": <Cloud></Cloud>,
     "09d": <Rain></Rain>, // Shower rain
     "09n": <Rain></Rain>,
     "10d": <Rain></Rain>, // Rain

@@ -8,7 +8,13 @@ function Header({ city, setCity }) {
     month: "long",
     day: "numeric",
   });
-  console.log(now);
+  const capitalize = (string) => {
+    return string
+      .toLowerCase()
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  };
 
   return (
     <>
@@ -16,7 +22,7 @@ function Header({ city, setCity }) {
         {/* <SearchBar setCity={setCity}></SearchBar> */}
         <TestSearch setCity={setCity}></TestSearch>
         <div className="header-text w-full max-w-md">
-          <h2 className="text-2xl">{city}</h2>
+          <h2 className="text-2xl">{capitalize(city)}</h2>
           <h4 className="text-sm">{today}</h4>
         </div>
       </header>

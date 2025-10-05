@@ -7,7 +7,6 @@ export default function TestHeader({ setCity }) {
   const bounceTimer = useRef(null);
 
   useEffect(() => {
-    console.log("useEffect");
     if (query) {
       if (bounceTimer.current) clearTimeout(bounceTimer.current);
       bounceTimer.current = setTimeout(() => {
@@ -24,7 +23,6 @@ export default function TestHeader({ setCity }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setCity(query);
-    setQuery("");
   };
 
   return (

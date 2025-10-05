@@ -1,11 +1,13 @@
 import iconSad from "../assets/icons/icon_sad.svg";
-import Sun from "../shapes/Sun";
-import Cloud from "../shapes/Cloud";
-import Rain from "../shapes/Rain";
-import Snow from "../shapes/Snow";
-import Moon from "../shapes/Moon";
+// import Sun from "../shapes/Sun";
+// import Cloud from "../shapes/Cloud";
+// import Rain from "../shapes/Rain";
+// import Snow from "../shapes/Snow";
+// import Moon from "../shapes/Moon";
+import WeatherIcon from "../shapes/GetShape.jsx";
 
 export default function Banner({ weatherData }) {
+  
   if (weatherData && Number(weatherData.cod) !== 200) {
     return (
       <div className="flex flex-col items-center p-4 text-2xl text-center text-white">
@@ -19,6 +21,7 @@ export default function Banner({ weatherData }) {
 
   const temp = Math.round(weatherData?.main?.temp) ?? "--";
   const desc = weatherData?.weather?.[0]?.description ?? "--";
+  const icon = weatherData?.weather?.[0]?.icon ?? "";
   const tempMax = Math.round(weatherData?.main?.temp_max) ?? "--";
   const tempMin = Math.round(weatherData?.main?.temp_min) ?? "--";
   const humidity = weatherData?.main?.humidity ?? "--";
@@ -30,6 +33,7 @@ export default function Banner({ weatherData }) {
       className="flex flex-col items-center gap-6 p-3"
       id="current-section"
     >
+      <p>{icon}</p>
       {/* First line */}
       <article className="flex w-full max-w-md">
         <div className="general flex-1 text-center">
@@ -39,7 +43,7 @@ export default function Banner({ weatherData }) {
           </h1>
           <h3 className="text-lg">{desc}</h3>
         </div>
-        <Sun></Sun>
+        <WeatherIcon iconCode={icon}></WeatherIcon>
       </article>
       {/* Second line */}
       <article
