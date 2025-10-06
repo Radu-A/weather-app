@@ -6,24 +6,6 @@ import Sun from "./Sun";
 import Thunder from "./Thunder";
 
 export default function WeatherIcon({iconCode}) {
-  //   const iconMap = {
-  //     "01d": "☀️", // Clear sky (day)
-  //     "01n": "🌑", // Clear sky (night)
-  //     "02d": "🌤️", // Few clouds (day)
-  //     "02n": "🌑☁️", // Few clouds (night)
-  //     "03d": "☁️", // Scattered clouds
-  //     "03n": "☁️",
-  //     "09d": "🌧️", // Shower rain
-  //     "09n": "🌧️",
-  //     "10d": "🌦️", // Rain
-  //     "10n": "🌧️🌙",
-  //     "11d": "⛈️", // Thunderstorm
-  //     "11n": "⛈️",
-  //     "13d": "❄️", // Snow
-  //     "13n": "❄️",
-  //     "50d": "🌫️", // Mist
-  //     "50n": "🌫️",
-  //   };
   const iconMap = {
     "01d": <Sun></Sun>, // Clear sky (day)
     "01n": <Moon></Moon>, // Clear sky (night)

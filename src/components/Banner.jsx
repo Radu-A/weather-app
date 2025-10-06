@@ -31,7 +31,7 @@ export default function Banner({ weatherData, error }) {
 
   return (
     <section
-      className="flex flex-col items-center gap-6 p-3 "
+      className="flex flex-col items-center gap-8 my-7 p-3 "
       id="current-section"
     >
       {/* First line */}
