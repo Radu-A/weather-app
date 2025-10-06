@@ -1,7 +1,7 @@
 import WeatherIcon from "../shapes/GetShape.jsx";
 import Moon from "../shapes/Moon.jsx";
 import Rain from "../shapes/Rain.jsx";
-import Sun from "../shapes/Rain.jsx";
+import Sun from "../shapes/Sun.jsx";
 import Cloud from "../shapes/Cloud.jsx";
 import Thunder from "../shapes/Thunder.jsx";
 import { capitalize } from "../utils/text.js";
@@ -44,8 +44,7 @@ export default function Banner({ weatherData, error }) {
           <h3 className="text-lg">{desc}</h3>
         </div>
         <div className="icon-container flex-1 flex justify-center items-center">
-          {/* <WeatherIcon iconCode={iconCode}></WeatherIcon> */}
-          <Thunder />
+          <WeatherIcon iconCode={iconCode}></WeatherIcon>
         </div>
       </article>
       {/* Second line */}

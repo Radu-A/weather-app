@@ -1,6 +1,6 @@
 export default function Rain() {
   return (
-    <div className="relative w-40 h-40 flex flex-col justify-center items-center">
+    <div className="relative w-40 h-30 flex flex-col justify-center items-center">
       {/* Nube */}
       <div className="relative w-50 h-24">
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-24 rounded-full bg-blue-100 shadow-lg"></div>
