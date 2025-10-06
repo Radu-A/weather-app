@@ -8,6 +8,7 @@ import {
   fetchWeatherByCity,
   fetchWeatherByCoords,
 } from "./utils/fetchWeather.js";
+import { AnimatePresence, motion } from "framer-motion";
 
 const DEFAULT_CITY = "Sevilla";
 
@@ -18,7 +19,7 @@ function App() {
 
   const classNameList = {
     sunny: "h-screen bg-gradient-to-b from-sky-600 to-sky-200",
-    cloudy: "h-screen bg-gradient-to-b from-cyan-700 to-cyan-100",
+    cloudy: "h-screen bg-gradient-to-b from-cyan-600 to-cyan-100",
     night: "h-screen bg-gradient-to-b from-gray-900 to-cyan-200",
   };
   const [className, setClassName] = useState(classNameList.sunny);
@@ -33,15 +34,7 @@ function App() {
       .catch((err) => console.warn("Location error:", err.message));
   }, []);
 
-  // Observamos "coors": se ejecuta cada vez que coors cambia
-  useEffect(() => {
-    if (coors) {
-      console.log("Nuevas coordenadas:", coors);
-      // aquí podrías disparar otra acción (p.ej. fetchWeather por coords)
-    }
-  }, [coors]);
-
-  /** 🌦️ Fetch weather when city or coords change */
+  /** Fetch weather when city or coords change */
   useEffect(() => {
     const loadWeather = async () => {
       try {
@@ -63,7 +56,7 @@ function App() {
     loadWeather();
   }, [city, coors]);
 
-  // efecto para cambiar fondo según icono (ejemplo)
+  // Change background depending on icon code
   useEffect(() => {
     const iconCode = weatherData?.weather?.[0]?.icon ?? "";
     if (["01d", "02d", "03d"].includes(iconCode)) {
@@ -76,9 +69,21 @@ function App() {
   }, [weatherData]);
 
   return (
-    <div className={className}>
-      <Header city={city} setCity={setCity} />
-      <MainLayout weatherData={weatherData} />
+    <div className="relative h-screen overflow-hidden">
+      <AnimatePresence mode="sync">
+        <motion.div
+          key={className}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
+          className={`absolute inset-0 ${className}`}
+        />
+      </AnimatePresence>
+      <div className="absolute inset-0">
+        <Header city={city} setCity={setCity} />
+        <MainLayout weatherData={weatherData} />
+      </div>
     </div>
   );
 }
