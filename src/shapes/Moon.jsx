@@ -1,6 +1,6 @@
 export default function Moon() {
   return (
-    <div className="relative w-30 h-30 flex items-center justify-center">
+    <div className="relative w-30 h-30">
       {/* Aura (halo) */}
       <div className="absolute w-30 h-30 rounded-full bg-yellow-200/40 blur-xl shadow-[0_0_30px_20px_rgba(255,255,255,0.8)]"></div>
 

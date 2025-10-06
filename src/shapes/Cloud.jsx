@@ -9,9 +9,6 @@ export default function Cloud() {
 
       {/* Parte derecha */}
       <div className="absolute bottom-0 right-4 w-20 h-20 rounded-full bg-white shadow-lg"></div>
-
-      {/* Base de la nube */}
-      {/* <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-12 rounded-full bg-white shadow-lg"></div> */}
     </div>
   );
 }
