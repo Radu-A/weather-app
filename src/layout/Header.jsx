@@ -1,24 +1,12 @@
 import SearchBar from "../components/CitySearch";
-import TestSearch from "../components/TestSearch";
-import { capitalize } from "../utils/text";
+import CityAndDate from "../components/CityAndDate";
 
-function Header({ city, setCity }) {
-  const now = new Date();
-  const today = now.toLocaleDateString("en-EN", {
-    weekday: "long",
-    month: "long",
-    day: "numeric",
-  });
-
+function Header({ setCity, weatherData, error }) {
   return (
     <>
       <header className="flex flex-col items-center justify-center p-3 text-white gap-3">
-        {/* <SearchBar setCity={setCity}></SearchBar> */}
-        <TestSearch setCity={setCity}></TestSearch>
-        <div className="header-text w-full max-w-md">
-          <h2 className="text-2xl">{capitalize(city)}</h2>
-          <h4 className="text-sm">{today}</h4>
-        </div>
+        <SearchBar setCity={setCity}></SearchBar>
+        <CityAndDate weatherData={weatherData} error={error}></CityAndDate>
       </header>
     </>
   );

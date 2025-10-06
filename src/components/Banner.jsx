@@ -2,14 +2,14 @@ import WeatherIcon from "../shapes/GetShape.jsx";
 import { capitalize } from "../utils/text.js";
 import iconSad from "../assets/icons/icon_sad.svg";
 
-export default function Banner({ weatherData }) {
-  if (weatherData && Number(weatherData.cod) !== 200) {
+export default function Banner({ weatherData, error }) {
+  if (error) {
     return (
-      <div className="flex flex-col items-center p-4 text-2xl text-center text-white">
+      <section className="flex flex-col items-center p-4 text-2xl text-center text-white">
         <img src={iconSad} alt="" className="w-20" />
         <p>We are so sorry.</p>
         <p>We couldn't find that city.</p>
-      </div>
+      </section>
     );
   }
 
@@ -26,7 +26,7 @@ export default function Banner({ weatherData }) {
 
   return (
     <section
-      className="flex flex-col items-center gap-6 p-3"
+      className="flex flex-col items-center gap-6 p-3 "
       id="current-section"
     >
       {/* First line */}
@@ -38,7 +38,9 @@ export default function Banner({ weatherData }) {
           </h1>
           <h3 className="text-lg">{desc}</h3>
         </div>
-        <WeatherIcon iconCode={iconCode}></WeatherIcon>
+        <div className="iconContainer flex-1 flex content-center items-center">
+          <WeatherIcon iconCode={iconCode}></WeatherIcon>
+        </div>
       </article>
       {/* Second line */}
       <article

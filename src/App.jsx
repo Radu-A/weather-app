@@ -16,6 +16,7 @@ function App() {
   const [city, setCity] = useState(DEFAULT_CITY);
   const [weatherData, setWeatherData] = useState(null);
   const [coors, setCoors] = useState(null);
+  const [error, setError] = useState(false);
 
   const classNameList = {
     sunny: "h-screen bg-gradient-to-b from-sky-600 to-sky-200",
@@ -24,7 +25,7 @@ function App() {
   };
   const [className, setClassName] = useState(classNameList.sunny);
 
-  /** 🧭 Request location once on mount */
+  /** Request location once on mount */
   useEffect(() => {
     getLocation()
       .then((coords) => {
@@ -48,8 +49,10 @@ function App() {
           const data = await fetchWeatherByCity(city);
           setWeatherData(data);
         }
+        setError(false)
       } catch (err) {
         console.error("Error loading weather:", err.message);
+        setError(true)
       }
     };
 
@@ -81,8 +84,8 @@ function App() {
         />
       </AnimatePresence>
       <div className="absolute inset-0">
-        <Header city={city} setCity={setCity} />
-        <MainLayout weatherData={weatherData} />
+        <Header setCity={setCity} weatherData={weatherData} error={error}/>
+        <MainLayout weatherData={weatherData} error={error}/>
       </div>
     </div>
   );

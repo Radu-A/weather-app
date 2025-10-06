@@ -1,0 +1,22 @@
+import { capitalize } from "../utils/text";
+
+export default function CityAndDate({ weatherData, error }) {
+  const cityName = weatherData?.name ?? "";
+  console.log(cityName);
+
+  if (error) {
+    return <></>;
+  }
+  const now = new Date();
+  const today = now.toLocaleDateString("en-EN", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+  });
+  return (
+    <div className="h-10 w-full max-w-md header-text">
+      <h2 className="text-2xl">{capitalize(cityName)}</h2>
+      <h4 className="text-sm">{today}</h4>
+    </div>
+  );
+}

@@ -1,38 +1,36 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function CitySearch({ setCity }) {
-  // Save what user write
+export default function TestHeader({ setCity }) {
   const [query, setQuery] = useState("");
-  // Debounced value
-  const [debouncedQuery, setDebouncedQuery] = useState("");
-  // Save timeout to cancel it
-  const debounceTimeout = useRef(null);
+  const bounceTimer = useRef(null);
 
-  // Restart timer each time "query" changes
   useEffect(() => {
-    // Cancel timer
-    if (debounceTimeout.current) clearTimeout(debounceTimeout.current);
-    // Create new timeout
-    debounceTimeout.current = setTimeout(() => {
-      setDebouncedQuery(query);
-    }, 600);
-    // Abort if query changes again
-    return () => clearTimeout(debounceTimeout.current);
-  }, [query]);
+    // If query exists save the query as city name
+    if (query) {
+      if (bounceTimer.current) clearTimeout(bounceTimer.current);
+      bounceTimer.current = setTimeout(() => {
+        setCity(query);
+      }, 1000);
+    // If query doesn't exists set city name as empty string
+    // to trigger the HTTP call with geolocation
+    } else {
+      if (bounceTimer.current) clearTimeout(bounceTimer.current);
+      bounceTimer.current = setTimeout(() => {
+        setCity("");
+      }, 1000);
+    }
+  }, [query, setCity]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (query.trim() !== "") {
-      setCity(debouncedQuery);
-      setQuery("");
-    }
+    setCity(query);
   };
 
   return (
     <form onSubmit={handleSubmit} className="w-full max-w-md">
       <input
+        name="city"
         type="text"
-        // always show the state
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="City"

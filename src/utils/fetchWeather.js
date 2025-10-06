@@ -7,9 +7,11 @@ export async function fetchWeatherByCity(city) {
   try {
     const res = await fetch(`${BASE_URL}?q=${city}&appid=${API_KEY}&units=metric`);
     const data = await res.json();
+    // Create a custom error with data.message as content
     if (data.cod !== 200) throw new Error(data.message);
     return data;
   } catch (error) {
+    // 
     console.error("Error fetching weather by city:", error.message);
     throw error;
   }
