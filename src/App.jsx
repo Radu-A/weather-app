@@ -18,12 +18,11 @@ function App() {
   const [coors, setCoors] = useState(null);
   const [error, setError] = useState(false);
 
-  const classNameList = {
+  const backGroundAppList = {
     sunny: "h-screen bg-gradient-to-b from-sky-600 to-sky-200",
-    cloudy: "h-screen bg-gradient-to-b from-cyan-600 to-cyan-100",
+    cloudy: "h-screen bg-gradient-to-b from-cyan-700 to-cyan-200",
     night: "h-screen bg-gradient-to-b from-gray-900 to-cyan-200",
   };
-  const [className, setClassName] = useState(classNameList.sunny);
 
   /** Request location once on mount */
   useEffect(() => {
@@ -62,17 +61,13 @@ function App() {
   }, [city, coors]);
 
   // Change background depending on icon code
-  useEffect(() => {
-    const iconCode = weatherData?.current?.weather?.[0]?.icon ?? "";
-    console.log(iconCode);
-    if (["01d", "02d", "03d"].includes(iconCode)) {
-      setClassName(classNameList.sunny);
-    } else if (iconCode.includes("n")) {
-      setClassName(classNameList.night);
-    } else {
-      setClassName(classNameList.cloudy);
-    }
-  }, [weatherData]);
+  const iconCode = weatherData?.current?.weather?.[0]?.icon ?? "";
+  let className = backGroundAppList.cloudy;
+  if (["01d", "02d", "03d"].includes(iconCode)) {
+    className = backGroundAppList.sunny;
+  } else if (iconCode.includes("n")) {
+    className = backGroundAppList.night;
+  }
 
   return (
     <div className="relative h-screen overflow-hidden">
