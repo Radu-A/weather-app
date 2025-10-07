@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function TestHeader({ setCity }) {
+export default function TestHeader({ setCityName, setCity }) {
   const [query, setQuery] = useState("");
   const bounceTimer = useRef(null);
 
@@ -11,8 +11,8 @@ export default function TestHeader({ setCity }) {
       bounceTimer.current = setTimeout(() => {
         setCity(query);
       }, 1000);
-    // If query doesn't exists set city name as empty string
-    // to trigger the HTTP call with geolocation
+      // If query doesn't exists set city name as empty string
+      // to trigger the HTTP call with geolocation
     } else {
       if (bounceTimer.current) clearTimeout(bounceTimer.current);
       bounceTimer.current = setTimeout(() => {

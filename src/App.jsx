@@ -8,12 +8,12 @@ import {
   fetchWeatherByCity,
   fetchWeatherByCoords,
 } from "./utils/fetchWeather.js";
+import { fetchCityName } from "./utils/fetchCityName.js";
 import { AnimatePresence, motion } from "framer-motion";
 
-const DEFAULT_CITY = "Sevilla";
-
 function App() {
-  const [city, setCity] = useState(DEFAULT_CITY);
+  const [city, setCity] = useState("");
+  const [cityName, setCityName] = useState("");
   const [weatherData, setWeatherData] = useState(null);
   const [coors, setCoors] = useState(null);
   const [error, setError] = useState(false);
@@ -44,8 +44,11 @@ function App() {
             coors.longitude
           );
           setWeatherData(data);
+          const cityName = await fetchCityName(coors.latitude, coors.longitude);
+          setCityName(cityName);
         } else if (city) {
           const data = await fetchWeatherByCity(city);
+          setCityName(city);
           setWeatherData(data);
         }
         setError(false);
@@ -83,7 +86,12 @@ function App() {
         />
       </AnimatePresence>
       <div className="absolute inset-0">
-        <Header setCity={setCity} weatherData={weatherData} error={error} />
+        <Header
+          cityName={cityName}
+          setCityName={setCityName}
+          setCity={setCity}
+          error={error}
+        />
         <MainLayout weatherData={weatherData} error={error} />
       </div>
     </div>

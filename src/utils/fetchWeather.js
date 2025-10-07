@@ -18,11 +18,9 @@ export async function fetchWeatherByCity(city) {
       );
     const lat = data1.coord.lat;
     const lon = data1.coord.lon;
-    console.log(lat, lon);
-
     // TRYING 2º FETCH
     const res2 = await fetch(
-      `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&appid=${API_KEY}`
+      `${ONECALL_URL}?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&appid=${API_KEY}&units=metric`
     );
     const data2 = await res2.json();
     // Create a custom error with data1.message as content
@@ -31,7 +29,7 @@ export async function fetchWeatherByCity(city) {
         `HTTP error: ${data2.message}` || `HTTP error ${res2.status}`
       );
     console.log(data2);
-    return data1;
+    return data2;
   } catch (error) {
     //
     console.error("Error fetching weather by city:", error.message);
@@ -43,10 +41,14 @@ export async function fetchWeatherByCity(city) {
 export async function fetchWeatherByCoords(lat, lon) {
   try {
     const res = await fetch(
-      `${BASE_URL}?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+      `${ONECALL_URL}?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&appid=${API_KEY}&units=metric`
     );
     const data = await res.json();
-    if (data.cod !== 200) throw new Error(data.message);
+    // Create a custom error with data1.message as content
+    if (!res.ok)
+      throw new Error(
+        `HTTP error: ${data.message}` || `HTTP error ${res.status}`
+      );
     return data;
   } catch (error) {
     console.error("Error fetching weather by coordinates:", error.message);

@@ -7,7 +7,7 @@ import Thunder from "../shapes/Thunder.jsx";
 import { capitalize } from "../utils/text.js";
 import iconSad from "../assets/icons/icon_sad.svg";
 
-export default function Banner({ weatherData, error }) {
+export default function Current({ weatherData, error }) {
   if (error) {
     return (
       <section className="flex flex-col items-center p-4 text-2xl text-center text-white">
@@ -18,14 +18,16 @@ export default function Banner({ weatherData, error }) {
     );
   }
 
-  const temp = Math.round(weatherData?.main?.temp) ?? "--";
-  const desc = capitalize(weatherData?.weather?.[0]?.description ?? "--");
-  const iconCode = weatherData?.weather?.[0]?.icon ?? "";
-  const tempMax = Math.round(weatherData?.main?.temp_max) ?? "--";
-  const tempMin = Math.round(weatherData?.main?.temp_min) ?? "--";
-  const humidity = weatherData?.main?.humidity ?? "--";
-  const wind = Math.round(weatherData?.wind?.speed) ?? "--";
-  const feels = Math.round(weatherData?.main?.feels_like) ?? "--";
+  const temp = Math.round(weatherData?.current?.temp) ?? "--";
+  const desc = capitalize(
+    weatherData?.current?.weather?.[0]?.description ?? "--"
+  );
+  const iconCode = weatherData?.current?.weather?.[0]?.icon ?? "";
+  const tempMax = Math.round(weatherData?.daily?.[0]?.temp?.max) ?? "--";
+  const tempMin = Math.round(weatherData?.daily?.[0]?.temp?.min) ?? "--";
+  const humidity = weatherData?.current?.humidity ?? "--";
+  const wind = Math.round(weatherData?.current?.wind_speed) ?? "--";
+  const feels = Math.round(weatherData?.current?.feels_like) ?? "--";
 
   // console.log(iconCode);
 

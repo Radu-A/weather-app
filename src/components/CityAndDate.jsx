@@ -1,8 +1,6 @@
 import { capitalize } from "../utils/text";
 
-export default function CityAndDate({ weatherData, error }) {
-  const cityName = weatherData?.name ?? "";
-
+export default function CityAndDate({ cityName, error }) {
   if (error) {
     return <></>;
   }
