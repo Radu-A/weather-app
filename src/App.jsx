@@ -63,7 +63,8 @@ function App() {
 
   // Change background depending on icon code
   useEffect(() => {
-    const iconCode = weatherData?.weather?.[0]?.icon ?? "";
+    const iconCode = weatherData?.current?.weather?.[0]?.icon ?? "";
+    console.log(iconCode);
     if (["01d", "02d", "03d"].includes(iconCode)) {
       setClassName(classNameList.sunny);
     } else if (iconCode.includes("n")) {

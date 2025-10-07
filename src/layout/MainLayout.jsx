@@ -6,7 +6,7 @@ function Main({ weatherData, error }) {
     <>
       <main className="text-white">
         <Current weatherData={weatherData} error={error} />
-        <Forecast />
+        <Forecast weatherData={weatherData} error={error} />
       </main>
     </>
   );
