@@ -29,7 +29,6 @@ function App() {
   useEffect(() => {
     getLocation()
       .then((coords) => {
-        console.log("New coordinates:", coords);
         setCoors(coords);
       })
       .catch((err) => console.warn("Location error:", err.message));
@@ -49,10 +48,10 @@ function App() {
           const data = await fetchWeatherByCity(city);
           setWeatherData(data);
         }
-        setError(false)
+        setError(false);
       } catch (err) {
         console.error("Error loading weather:", err.message);
-        setError(true)
+        setError(true);
       }
     };
 
@@ -84,8 +83,8 @@ function App() {
         />
       </AnimatePresence>
       <div className="absolute inset-0">
-        <Header setCity={setCity} weatherData={weatherData} error={error}/>
-        <MainLayout weatherData={weatherData} error={error}/>
+        <Header setCity={setCity} weatherData={weatherData} error={error} />
+        <MainLayout weatherData={weatherData} error={error} />
       </div>
     </div>
   );

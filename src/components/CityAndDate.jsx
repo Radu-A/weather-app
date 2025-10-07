@@ -2,7 +2,6 @@ import { capitalize } from "../utils/text";
 
 export default function CityAndDate({ weatherData, error }) {
   const cityName = weatherData?.name ?? "";
-  console.log(cityName);
 
   if (error) {
     return <></>;
