@@ -1,9 +1,4 @@
 import WeatherIcon from "../shapes/GetShape.jsx";
-import Moon from "../shapes/Moon.jsx";
-import Rain from "../shapes/Rain.jsx";
-import Sun from "../shapes/Sun.jsx";
-import Cloud from "../shapes/Cloud.jsx";
-import Thunder from "../shapes/Thunder.jsx";
 import { capitalize } from "../utils/text.js";
 import iconSad from "../assets/icons/icon_sad.svg";
 
@@ -33,7 +28,7 @@ export default function Current({ weatherData, error }) {
 
   return (
     <section
-      className="flex flex-col items-center gap-8 my-7 p-3 "
+      className="flex flex-col items-center gap-8 p-3 "
       id="current-section"
     >
       {/* First line */}
@@ -50,27 +45,24 @@ export default function Current({ weatherData, error }) {
         </div>
       </article>
       {/* Second line */}
-      <article
-        id="max-min"
-        className="flex justify-between w-full max-w-sm text-lg"
-      >
-        <div
-          className="px-5 py-2 rounded-3xl
-            text-white
-            shadow-[inset_1px_1px_6px_rgba(0,0,0,0.5),0_2px_4px_rgba(255,255,255,0.5)]"
-          id="max"
-        >
-          <span className="text-base">High: {tempMax}ºC</span>
-        </div>
-
+      <article id="max-min" className="flex justify-between w-full max-w-sm">
         <div
           className="px-5 py-2 rounded-3xl
             text-white
             shadow-[inset_1px_1px_6px_rgba(0,0,0,0.5),0_2px_4px_rgba(255,255,255,0.5)]"
           id="min"
         >
-          <span className="text-base">Min: {tempMin}ºC</span>
+          <span className="text-sm">Min: {tempMin}ºC</span>
         </div>
+        <div
+          className="px-5 py-2 rounded-3xl
+            text-white
+            shadow-[inset_1px_1px_6px_rgba(0,0,0,0.5),0_2px_4px_rgba(255,255,255,0.5)]"
+          id="max"
+        >
+          <span className="text-sm">High: {tempMax}ºC</span>
+        </div>
+
       </article>
       {/* Third line */}
       <article
@@ -80,7 +72,7 @@ export default function Current({ weatherData, error }) {
             shadow-[inset_1px_1px_6px_rgba(0,0,0,0.5),0_2px_4px_rgba(255,255,255,0.5)]
             divide-x divide-white/50"
       >
-        <div className="flex-1 extra-item" id="humidity">
+        <div className="flex-1 extra-item " id="humidity">
           <span>Humidity</span>
           <h3>{humidity}%</h3>
         </div>
