@@ -19,9 +19,9 @@ function App() {
   const [error, setError] = useState(false);
 
   const backGroundAppList = {
-    sunny: "h-screen bg-gradient-to-b from-sky-600 to-sky-200",
-    cloudy: "h-screen bg-gradient-to-b from-cyan-700 to-cyan-200",
-    night: "h-screen bg-gradient-to-b from-gray-900 to-cyan-200",
+    sunny: "bg-gradient-to-b from-sky-600 to-sky-200",
+    cloudy: "bg-gradient-to-b from-cyan-700 to-cyan-200",
+    night: "bg-gradient-to-b from-gray-900 to-cyan-200",
   };
 
   /** Request location once on mount */
@@ -70,7 +70,7 @@ function App() {
   }
 
   return (
-    <div className="relative h-screen overflow-hidden">
+    <div className="relative min-h-screen">
       <AnimatePresence mode="sync">
         <motion.div
           key={className}
@@ -81,7 +81,7 @@ function App() {
           className={`absolute inset-0 ${className}`}
         />
       </AnimatePresence>
-      <div className="absolute inset-0">
+      <div className="relative z-10">
         <Header
           cityName={cityName}
           setCityName={setCityName}
